@@ -23,7 +23,7 @@ main.application {
     width: 80%;
     height: 90vh;
     position: relative;
-    top: -16%;
+    top: -10%;
     left: 10%;
     background-color: white;
     display: flex;
@@ -46,6 +46,24 @@ section.notifiche {
     background-color: #8edafc;
 }
 
+section.ricerca {
+    width: 95%;
+    margin: .3125rem auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 1.875rem;
+}
+
+section.ricerca > span {
+    width: 20%;
+    text-align: center;
+}
+
+section.ricerca > input {
+    flex-grow: 1;
+    border: none;
+}
 
 /* +++++++ colonna destra +++++++ */
 .main-right {
