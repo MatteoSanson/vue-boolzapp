@@ -27,7 +27,7 @@
     <div class="main-body">
 
         <!-- main della mia app  -->
-        <main class="application">
+        <main id="app" class="application">
 
             <!-- colonna di sinistra  -->
             <div class="main-left">
@@ -73,20 +73,12 @@
                 <!-- sezione archivio messaggi  -->
                 <section class="messages">
                     <ul>
-                        <li class="contact-message">
+                        <li v-for="(contact, index) in contacts" class="contact-message">
                             <div class="contact-pic">
-                                <img src="/img/avatar_6.jpg" alt="">
+                                <img :src="contact.avatar" :alt="contact.name">
                             </div>
                             <div class="info-contact">
-                                prova
-                            </div>
-                        </li>
-                        <li class="contact-message">
-                            <div class="contact-pic">
-                                <img src="/img/avatar_6.jpg" alt="">
-                            </div>
-                            <div class="info-contact">
-                                prova
+                                {{ contact.name}}
                             </div>
                         </li>
                     </ul>
