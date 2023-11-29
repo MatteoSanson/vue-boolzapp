@@ -113,10 +113,28 @@ section.ricerca > input {
 /* +++++++ sezione messaggi sinistra ++++++ */
 section.messages {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
+.contact-pic {
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    /* background-color: #f2f2f2; */
+    overflow: hidden;
+}
 
+.contact-pic img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact-message {
+    display: flex;
+    gap: .625rem;
+    padding: .9375rem;
+    border-bottom: 1px solid #f2f2f2;
+}
 
 /* +++++++ colonna destra +++++++ */
 .main-right {
@@ -128,11 +146,11 @@ section.messages {
 section.main-chat {
     flex-grow: 1;
     max-height: calc(100vh - 8.75rem);
-    overflow-y: auto;
+    overflow-y: scroll;
     background-image: url(/img/mine.jpg) ;
 }
 
 footer.chat {
-    height: 4.375rem;
+    min-height: 4.375rem;
     background-color: #f2ede9;
 }
