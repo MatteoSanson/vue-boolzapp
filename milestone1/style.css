@@ -118,6 +118,7 @@ section.ricerca > input {
 input.search {
     height: 1.5625rem;
     font-size: 1.25rem;
+    outline: none;
 }
 
 
@@ -125,6 +126,7 @@ input.search {
 section.messages {
     flex-grow: 1;
     overflow-y: scroll;
+    background-color: white;
 }
 
 .contact-pic {
