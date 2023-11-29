@@ -38,8 +38,8 @@ header.app {
 
 /* +++++++ colonna sinistra +++++++ */
 .main-left {
-    min-width: 35%;
-    max-width: 35%;
+    min-width: 30%;
+    max-width: 30%;
     background-color: #fafafa;
     border-right: 1px solid lightgrey;
     display: flex;
@@ -47,11 +47,16 @@ header.app {
 }
 
 /* +++++++ head nav +++++++  */
-nav.left, nav.right {
+header.app nav.left, header.app nav.right {
     display: flex;
     align-items: center;
     gap: .625rem;
     padding: 0 .625rem;
+}
+
+header.app nav.right {
+    font-size: 1.25rem;
+    color: grey;
 }
 
 nav > .img-profilo {
@@ -102,11 +107,17 @@ section.ricerca {
 section.ricerca > span {
     width: 20%;
     text-align: center;
+    cursor: pointer;
 }
 
 section.ricerca > input {
     flex-grow: 1;
     border: none;
+}
+
+input.search {
+    height: 1.5625rem;
+    font-size: 1.25rem;
 }
 
 
@@ -120,7 +131,6 @@ section.messages {
     width: 3.75rem;
     height: 3.75rem;
     border-radius: 50%;
-    /* background-color: #f2f2f2; */
     overflow: hidden;
 }
 
@@ -150,7 +160,35 @@ section.main-chat {
     background-image: url(/img/mine.jpg) ;
 }
 
+
+/* ++++++++ footer della chat ++++++++  */
 footer.chat {
     min-height: 4.375rem;
     background-color: #f2ede9;
+    display: flex;
+    align-items: center;
+}
+
+footer.chat nav.left, footer.chat nav.right {
+    width: 10%;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5625rem;
+    color: grey;
+}
+
+footer.chat nav.center {
+    flex-grow: 1;
+}
+
+nav.center textarea#text-message {
+    font-size: 1.125rem;
+    border: none;
+    width: 100%;
+    height: auto;
+    resize: none;
+    max-height: 3em;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
 }
