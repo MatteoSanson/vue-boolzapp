@@ -32,13 +32,35 @@ main.application {
 header.app {
     height: 4.375rem;
     background-color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* +++++++ colonna sinistra +++++++ */
 .main-left {
-    width: 30%;
+    width: 35%;
     background-color: #fafafa;
     border-right: 1px solid lightgrey;
+}
+
+nav.left, nav.right {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: 0 .625rem;
+}
+
+nav > .img-profilo {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    background-color: orange;
+    overflow: hidden;
+}
+
+.img-profilo img {
+    width: 100%;
+    object-fit: cover;
 }
 
 section.notifiche {
