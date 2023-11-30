@@ -156,29 +156,31 @@ section.main-chat {
     background-image: url(/img/mine.jpg);
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding-top: 1.875rem;
+}
+
+section.main-chat div.view-chat {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
 }
 
 .messageCloud {
     width: 15.625rem;
     background-color: white;
-    height: 2.5rem;
+    min-height: 2.5rem;
     border-radius: .3125rem;
+    padding: .625rem;
 }
 
 .messageCloud.sent {
     background-color: #d5f9ba;
-    position: relative;
-    left: 25rem;
-    top: 0;
     margin-bottom: 10px;
+    margin-left: auto;
 }
 
 .messageCloud.received {
-    background-color: white;
-    position: relative;
-    left: 1.25rem;
-    top: 0;
     margin-bottom: 10px;
 }
 
