@@ -4,10 +4,10 @@ console.log('sto funzionando');
 
 const { createApp } = Vue;
 
-  createApp({
-    data() {
-      return {
-        contacts: [
+createApp({
+data() {
+    return {
+    contacts: [
             {
                 name: 'Michele',
                 avatar: '/img/avatar_1.jpg',
@@ -169,7 +169,18 @@ const { createApp } = Vue;
                     }
                 ],
             }
-        ]
-          }
+    ],
+    currentContact: null,
         }
-  }).mount('#app')
+},
+methods: {
+    setCurrentContact(contact) {
+        this.currentContact = contact;
+    }
+},
+created() {
+    if (this.contacts.length > 0) {
+      this.setCurrentContact(this.contacts[0]);
+    }
+  }
+}).mount('#app')

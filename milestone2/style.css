@@ -138,10 +138,17 @@ section.messages {
 .contact-message {
     display: flex;
     gap: .625rem;
-    padding: .9375rem;
+    padding: .625rem;
     border-bottom: 1px solid #f2f2f2;
 }
 
+.contact-message:hover {
+    background-color: #e9ebeb;
+}
+
+.contact-message.active {
+    background-color: #e9ebeb;
+}
 /* +++++++ colonna destra +++++++ */
 .main-right {
     flex-grow: 1;
@@ -160,18 +167,19 @@ section.main-chat {
     padding-top: 1.875rem;
 }
 
-section.main-chat div.view-chat {
+section.main-chat ul.view-chat {
     width: 85%;
     display: flex;
     flex-direction: column;
+    list-style: none;
 }
 
-.messageCloud {
+li.messageCloud {
     width: 15.625rem;
     background-color: white;
     min-height: 2.5rem;
     border-radius: .3125rem;
-    padding: .625rem;
+    padding: .9375rem;
 }
 
 .messageCloud.sent {
