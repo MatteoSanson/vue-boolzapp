@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('sto funzionando');
-
 const { createApp } = Vue;
 
 createApp({

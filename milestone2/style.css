@@ -87,6 +87,14 @@ section.notifiche {
     color: #8edafc;
 } 
 
+.notifiche > div:nth-child(2) {
+    font-size: .8125rem;
+}
+
+.notifiche > div:nth-child(2) > div:last-child a{
+    font-size: .75rem;
+    color: grey;
+}
 /* ++++++ ricerca sinistra +++++  */
 section.ricerca {
     width: 95%;
@@ -110,7 +118,7 @@ section.ricerca > input {
 
 input.search {
     height: 1.5625rem;
-    font-size: 1.25rem;
+    font-size: .8125rem;
     outline: none;
 }
 
@@ -123,7 +131,8 @@ section.messages {
 }
 
 .contact-pic {
-    width: 3.75rem;
+    max-width: 3.75rem;
+    min-width: 3.75rem;
     height: 3.75rem;
     border-radius: 50%;
     overflow: hidden;
@@ -144,6 +153,15 @@ section.messages {
 
 .info-profile {
     list-style: none;
+}
+
+.info-profile > li:first-child {
+    padding: 5px 0;
+}
+
+.last-message {
+    font-size: .75rem;
+    color: grey;
 }
 
 .contact-message:hover {

@@ -49,8 +49,12 @@
                         <i class="fa-solid fa-bell-slash"></i>
                     </div>
                     <div>
-                        <div>ricevi notifiche di nuovi messaggi</div>
-                        <div>attiva notifiche</div>
+                        <div>Ricevi notifiche di nuovi messaggi</div>
+                        <div>
+                            <a href="#">
+                                Attiva notifiche
+                            </a>
+                        </div>
                     </div>
                 </section>
                 <!-- /sezione notifiche  -->
@@ -75,10 +79,10 @@
                             </div>
                             <ul class="info-profile">
                                 <li>
-                                    <p>{{ contact.name }}</p>
+                                    <p class="name-profile">{{ contact.name }}</p>
                                 </li>
                                 <li>
-                                    <p>{{ getLastMessage(contact).message }}</p>
+                                    <p class="last-message">{{ getLastMessage(contact).message }}</p>
                                 </li>
                             </ul>
                         </li>
@@ -102,7 +106,7 @@
                         </div>
                         <div class="nome-profilo">
                             <p>{{ currentContact.name }}</p>
-                            <p>Ultimo accesso</p>
+                            <p class="last-message">Ultimo accesso</p>
                         </div>
                     </nav>
 
