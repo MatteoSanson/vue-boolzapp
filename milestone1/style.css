@@ -6,9 +6,14 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    background: linear-gradient(to bottom, #009788 20%, #dadbd5 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-header.base {
+/* header.base {
     height: 7.5rem;
     background-color: #009788;
 }
@@ -16,16 +21,16 @@ header.base {
 .main-body {
     height: calc((100vh - 7.5rem));
     background-color: #dadbd5;
-}
+} */
 
 /* ++++++++++++ finestra applicazione +++++++++ */
 main.application {
     width: 80%;
     height: 90vh;
-    position: relative;
+    /* position: relative;
     top: -10%;
-    left: 10%;
-    background-color: white;
+    left: 10%; */
+    /* background-color: white; */
     display: flex;
 }
 
@@ -159,9 +164,34 @@ section.main-chat {
     flex-grow: 1;
     max-height: calc(100vh - 8.75rem);
     overflow-y: scroll;
-    background-image: url(/img/mine.jpg) ;
+    background-image: url(/img/mine.jpg);
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.875rem;
 }
 
+.messageCloud {
+    width: 15.625rem;
+    background-color: white;
+    height: 2.5rem;
+    border-radius: .3125rem;
+}
+
+.messageCloud.sent {
+    background-color: #d5f9ba;
+    position: relative;
+    left: 25rem;
+    top: 0;
+    margin-bottom: 10px;
+}
+
+.messageCloud.received {
+    background-color: white;
+    position: relative;
+    left: 1.25rem;
+    top: 0;
+    margin-bottom: 10px;
+}
 
 /* ++++++++ footer della chat ++++++++  */
 footer.chat {
