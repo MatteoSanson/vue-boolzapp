@@ -73,9 +73,14 @@
                             <div class="contact-pic">
                                 <img :src="contact.avatar" :alt="contact.name">
                             </div>
-                            <div class="info-contact">
-                                {{ contact.name}}
-                            </div>
+                            <ul class="info-profile">
+                                <li>
+                                    <p>{{ contact.name }}</p>
+                                </li>
+                                <li>
+                                    <p>{{ getLastMessage(contact).message }}</p>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </section>
@@ -93,10 +98,10 @@
                 <header class="app">
                     <nav class="left">
                         <div class="img-profilo">
-                            <img src="/img/avatar_4.jpg" alt="">
+                            <img :src="currentContact.avatar" alt="">
                         </div>
                         <div class="nome-profilo">
-                            <p>Ambros</p>
+                            <p>{{ currentContact.name }}</p>
                             <p>Ultimo accesso</p>
                         </div>
                     </nav>

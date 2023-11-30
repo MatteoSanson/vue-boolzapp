@@ -142,8 +142,13 @@ section.messages {
     border-bottom: 1px solid #f2f2f2;
 }
 
+.info-profile {
+    list-style: none;
+}
+
 .contact-message:hover {
     background-color: #e9ebeb;
+    cursor: pointer;
 }
 
 .contact-message.active {

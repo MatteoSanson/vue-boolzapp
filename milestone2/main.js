@@ -176,7 +176,11 @@ data() {
 methods: {
     setCurrentContact(contact) {
         this.currentContact = contact;
+    },
+    getLastMessage(contact) {
+        return contact.messages.length ? contact.messages[contact.messages.length - 1] : { message: "Non ci sono messaggi con questo contatto." };
     }
+    
 },
 created() {
     if (this.contacts.length > 0) {
