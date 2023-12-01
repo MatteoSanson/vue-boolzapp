@@ -22,7 +22,7 @@
         <main id="app" class="application">
 
             <!-- colonna di sinistra  -->
-            <div class="main-left">
+            <div class="main-left" v-cloak>
 
                 <!-- header sinistra  -->
                 <header class="app">
@@ -74,17 +74,20 @@
                         class="contact-message"
                         :class="{ 'active': contact === currentContact }"
                         @click="setCurrentContact(contact)">
-                            <div class="contact-pic">
+                            <div class="contact-pic" v-cloak>
                                 <img :src="contact.avatar" :alt="contact.name">
                             </div>
-                            <ul class="info-profile">
-                                <li>
-                                    <p class="name-profile">{{ contact.name }}</p>
-                                </li>
-                                <li>
-                                    <p class="last-message">{{ getLastMessage(contact).message }}</p>
-                                </li>
-                            </ul>
+                            <div class="message-info">
+                                <ul class="info-profile">
+                                  <li>
+                                    <p class="name-profile" v-cloak>{{ contact.name }}</p>
+                                  </li>
+                                  <li>
+                                    <p class="last-message" v-cloak>{{ getLastMessage(contact).message }}</p>
+                                  </li>
+                                </ul>
+                                <div class="ora">12:00</div>
+                            </div>
                         </li>
                     </ul>
                 </section>
@@ -96,7 +99,7 @@
             <!-- -----------------------------------  -->
 
             <!-- colonna di destra  -->
-            <div class="main-right">
+            <div class="main-right" v-cloak>
 
                 <!-- header destra  -->
                 <header class="app">
@@ -104,7 +107,7 @@
                         <div class="img-profilo">
                             <img :src="currentContact.avatar" alt="">
                         </div>
-                        <div class="nome-profilo">
+                        <div class="nome-profilo" v-cloak>
                             <p>{{ currentContact.name }}</p>
                             <p class="last-message">Ultimo accesso</p>
                         </div>
@@ -131,7 +134,8 @@
                             'received': message.status === 'received'
                           }"
                         >
-                          <p>{{ message.message }}</p>
+                          <p v-cloak>{{ message.message }}</p>
+                          <div class="message-time">12:00</div>
                         </li>
                       </ul>
                 </section>
@@ -147,7 +151,7 @@
 
                     <nav class="center">
                         <!-- <input class="text-message" type="text" placeholder="Scrivi un messaggio di testo"> -->
-                        <textarea name="" id="text-message" cols="" rows="3" placeholder="scrivi un messaggio"></textarea>
+                        <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio"></textarea>
                     </nav>
 
                     <nav class="right">

@@ -172,8 +172,9 @@ data() {
         }
 },
 methods: {
-    setCurrentContact(contact) {
-        this.currentContact = contact;
+    setCurrentContact(index) {
+        console.log(index);
+        this.currentContact = index;
     },
     getLastMessage(contact) {
         return contact.messages.length ? contact.messages[contact.messages.length - 1] : { message: "Non ci sono messaggi con questo contatto." };
@@ -184,5 +185,5 @@ created() {
     if (this.contacts.length > 0) {
       this.setCurrentContact(this.contacts[0]);
     }
-  }
+},
 }).mount('#app')

@@ -13,6 +13,9 @@ body {
     height: 100vh;
 }
 
+[v-cloak] {
+    display: none;
+}
 
 /* ++++++++++++ finestra applicazione +++++++++ */
 main.application {
@@ -30,12 +33,14 @@ header.app {
 
 /* +++++++ colonna sinistra +++++++ */
 .main-left {
-    min-width: 30%;
-    max-width: 30%;
+    width: 35%;
+    /* min-width: 35%;
+    max-width: 35%; */
     background-color: #fafafa;
     border-right: 1px solid lightgrey;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 /* +++++++ head nav +++++++  */
@@ -149,6 +154,16 @@ section.messages {
     gap: .625rem;
     padding: .625rem;
     border-bottom: 1px solid #f2f2f2;
+    justify-content: space-between;
+}
+.contact-message:last-child {
+    border-bottom: 0;
+}
+
+.message-info {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
 .info-profile {
@@ -172,6 +187,11 @@ section.messages {
 .contact-message.active {
     background-color: #e9ebeb;
 }
+
+.ora {
+    font-size: .75rem;
+    color: grey;
+}
 /* +++++++ colonna destra +++++++ */
 .main-right {
     flex-grow: 1;
@@ -181,7 +201,7 @@ section.messages {
 
 section.main-chat {
     flex-grow: 1;
-    max-height: calc(100vh - 8.75rem);
+    /* max-height: calc(100vh - 8.75rem); */
     overflow-y: scroll;
     background-image: url(/img/mine.jpg);
     display: flex;
@@ -201,8 +221,18 @@ li.messageCloud {
     width: 15.625rem;
     background-color: white;
     min-height: 2.5rem;
-    border-radius: .3125rem;
+    border-radius: .625rem;
     padding: .9375rem;
+    position: relative;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: grey;
+    align-self: flex-end;
+    position: absolute;
+    bottom: .1875rem; 
+    right: .3125rem;
 }
 
 .messageCloud.sent {
@@ -233,15 +263,19 @@ footer.chat nav.left, footer.chat nav.right {
 
 footer.chat nav.center {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    height: 85%;
 }
 
 nav.center textarea#text-message {
     font-size: 1.125rem;
     border: none;
     width: 100%;
-    height: auto;
+    /* height: auto; */
+    height: 80%;
     resize: none;
-    max-height: 3em;
+    /* max-height: 3em; */
     border-radius: 10px;
     padding: 10px;
     outline: none;
