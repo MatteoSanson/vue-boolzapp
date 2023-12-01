@@ -171,6 +171,8 @@ data() {
 
     currentContact: null,
     newMessage: '',
+    keySearch: '',
+    filteredContacts: [],
 
         }
 },
@@ -202,11 +204,21 @@ methods: {
             }, 1_000);
         }
     },
+    searchContacts() {
+        if (this.keySearch.trim() !== '') {
+            this.filteredContacts = this.contacts.filter(contact =>
+                contact.name.toLowerCase().includes(this.keySearch.toLowerCase())
+            );
+        } else {
+            this.filteredContacts = this.contacts;
+        }
+    },
     
 },
 created() {
     if (this.contacts.length > 0) {
-      this.setCurrentContact(this.contacts[0]);
+        this.setCurrentContact(this.contacts[0]);
+        this.filteredContacts = this.contacts;
     }
 },
 }).mount('#app')
