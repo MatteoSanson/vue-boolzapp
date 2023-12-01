@@ -168,17 +168,33 @@ data() {
                 ],
             }
     ],
+
     currentContact: null,
+    newMessage: '',
+
         }
 },
 methods: {
     setCurrentContact(index) {
-        console.log(index);
         this.currentContact = index;
     },
     getLastMessage(contact) {
         return contact.messages.length ? contact.messages[contact.messages.length - 1] : { message: "Non ci sono messaggi con questo contatto." };
-    }
+    },
+    sendMessage() {
+        const trimmedMessage = this.newMessage.trim();
+
+        if (trimmedMessage !== '') {
+            this.currentContact.messages.push({
+                date: '10/10/23 12:00:00',
+                message: trimmedMessage,
+                status: 'sent',
+            });
+
+            console.log('Nuovo array messages:', this.currentContact.messages);
+            this.newMessage = '';
+        }
+    },
     
 },
 created() {

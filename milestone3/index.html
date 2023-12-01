@@ -151,7 +151,8 @@
 
                     <nav class="center">
                         <!-- <input class="text-message" type="text" placeholder="Scrivi un messaggio di testo"> -->
-                        <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio"></textarea>
+                        <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+                        </textarea>
                     </nav>
 
                     <nav class="right">
