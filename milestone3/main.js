@@ -191,8 +191,15 @@ methods: {
                 status: 'sent',
             });
 
-            console.log('Nuovo array messages:', this.currentContact.messages);
             this.newMessage = '';
+
+            setTimeout(() => {
+                this.currentContact.messages.push({
+                    date: '10/10/23 12:00:02',
+                    message: 'Ok',
+                    status: 'received',
+                });
+            }, 1_000);
         }
     },
     
