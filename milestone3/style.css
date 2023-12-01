@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(to bottom, #009788 20%, #dadbd5 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/* ++++++++++++ finestra applicazione +++++++++ */
+main.application {
+    width: 80%;
+    height: 90vh;
+    display: flex;
+}
+
+header.app {
+    min-height: 4.375rem;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* +++++++ colonna sinistra +++++++ */
+.main-left {
+    width: 35%;
+    /* min-width: 35%;
+    max-width: 35%; */
+    background-color: #fafafa;
+    border-right: 1px solid lightgrey;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* +++++++ head nav +++++++  */
+header.app nav.left, header.app nav.right {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: 0 .625rem;
+}
+
+header.app nav.right {
+    font-size: 1.25rem;
+    color: grey;
+}
+
+nav > .img-profilo {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    background-color: orange;
+    overflow: hidden;
+}
+
+.img-profilo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* +++++++ notifiche sinistra +++++  */
+section.notifiche {
+    min-height: 5rem;
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding-left: 1.25rem;
+}
+
+.notifiche > .icona {
+    width: 3.125rem;
+    height: 3.125rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5625rem;
+    color: #8edafc;
+} 
+
+.notifiche > div:nth-child(2) {
+    font-size: .8125rem;
+}
+
+.notifiche > div:nth-child(2) > div:last-child a{
+    font-size: .75rem;
+    color: grey;
+}
+/* ++++++ ricerca sinistra +++++  */
+section.ricerca {
+    width: 95%;
+    margin: .3125rem auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    min-height: 1.875rem;
+}
+
+section.ricerca > span {
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+}
+
+section.ricerca > input {
+    flex-grow: 1;
+    border: none;
+}
+
+input.search {
+    height: 1.5625rem;
+    font-size: .8125rem;
+    outline: none;
+}
+
+
+/* +++++++ sezione messaggi sinistra ++++++ */
+section.messages {
+    flex-grow: 1;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.contact-pic {
+    max-width: 3.75rem;
+    min-width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.contact-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-message {
+    display: flex;
+    gap: .625rem;
+    padding: .625rem;
+    border-bottom: 1px solid #f2f2f2;
+    justify-content: space-between;
+}
+.contact-message:last-child {
+    border-bottom: 0;
+}
+
+.message-info {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.info-profile {
+    list-style: none;
+}
+
+.info-profile > li:first-child {
+    padding: 5px 0;
+}
+
+.last-message {
+    font-size: .75rem;
+    color: grey;
+}
+
+.contact-message:hover {
+    background-color: #e9ebeb;
+    cursor: pointer;
+}
+
+.contact-message.active {
+    background-color: #e9ebeb;
+}
+
+.ora {
+    font-size: .75rem;
+    color: grey;
+}
+/* +++++++ colonna destra +++++++ */
+.main-right {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+section.main-chat {
+    flex-grow: 1;
+    /* max-height: calc(100vh - 8.75rem); */
+    overflow-y: scroll;
+    background-image: url(/img/mine.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.875rem;
+}
+
+section.main-chat ul.view-chat {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+li.messageCloud {
+    width: 15.625rem;
+    background-color: white;
+    min-height: 2.5rem;
+    border-radius: .625rem;
+    padding: .9375rem;
+    position: relative;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: grey;
+    align-self: flex-end;
+    position: absolute;
+    bottom: .1875rem; 
+    right: .3125rem;
+}
+
+.messageCloud.sent {
+    background-color: #d5f9ba;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+.messageCloud.received {
+    margin-bottom: 10px;
+}
+
+/* ++++++++ footer della chat ++++++++  */
+footer.chat {
+    min-height: 4.375rem;
+    background-color: #f2ede9;
+    display: flex;
+    align-items: center;
+}
+
+footer.chat nav.left, footer.chat nav.right {
+    width: 10%;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5625rem;
+    color: grey;
+}
+
+footer.chat nav.center {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    height: 85%;
+}
+
+nav.center textarea#text-message {
+    font-size: 1.125rem;
+    border: none;
+    width: 100%;
+    /* height: auto; */
+    height: 80%;
+    resize: none;
+    /* max-height: 3em; */
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+}
