@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Boolzapp Milestone5</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">    
+    <!-- /google fonts -->
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- /fontawesome -->
+    <!-- my css  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- /my css  -->
+</head>
+<body>
+        <!-- main della mia app  -->
+        <main id="app" class="application">
+
+            <!-- colonna di sinistra  -->
+            <div class="main-left" v-cloak>
+
+                <!-- header sinistra  -->
+                <header class="app">
+                    <nav class="left">
+                        <div class="img-profilo">
+                            <img src="/img/avatar_1.jpg" alt="">
+                        </div>
+                        <div class="nome-profilo">
+                            Nome Utente
+                        </div>
+                    </nav>
+
+                    <nav class="right">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </nav>
+                </header>
+                <!-- /header sinistra  -->
+
+                <!-- sezione notifiche  -->
+                <section class="notifiche">
+                    <div class="icona">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div>
+                        <div>Ricevi notifiche di nuovi messaggi</div>
+                        <div>
+                            <a href="#">
+                                Attiva notifiche
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <!-- /sezione notifiche  -->
+
+                <!-- sezione ricerca  -->
+                <section class="ricerca">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input class="search" type="text" 
+                    placeholder="Cerca o inizia una nuova chat"
+                    v-model="keySearch" 
+                    @keyup="searchContacts"
+                    >
+                </section>
+                <!-- /sezione ricerca  -->
+
+                <!-- sezione archivio messaggi  -->
+                <section class="messages">
+                    <ul>
+                        <li 
+                        v-for="(contact, index) in filteredContacts"
+                        class="contact-message"
+                        :class="{ 'active': contact === currentContact }"
+                        @click="setCurrentContact(contact)">
+                            <div class="contact-pic" v-cloak>
+                                <img :src="contact.avatar" :alt="contact.name">
+                            </div>
+                            <div class="message-info">
+                                <ul class="info-profile">
+                                  <li>
+                                    <p class="name-profile" v-cloak>{{ contact.name }}</p>
+                                  </li>
+                                  <li>
+                                    <p class="last-message" v-cloak>{{ getLastMessage(contact).message }}</p>
+                                  </li>
+                                </ul>
+                                <div class="ora">12:00</div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /sezione archivio messaggi  -->
+
+            </div>
+            <!-- /colonna di sinistra  -->
+
+            <!-- -----------------------------------  -->
+
+            <!-- colonna di destra  -->
+            <div class="main-right" v-cloak>
+
+                <!-- header destra  -->
+                <header class="app">
+                    <nav class="left">
+                        <div class="img-profilo">
+                            <img :src="currentContact.avatar" alt="">
+                        </div>
+                        <div class="nome-profilo" v-cloak>
+                            <p>{{ currentContact.name }}</p>
+                            <p class="last-message">Ultimo accesso</p>
+                        </div>
+                    </nav>
+
+                    <nav class="right">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </nav>
+                </header>
+                <!-- /header destra  -->
+
+                <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
+
+                <!-- main chat window  -->
+                <section class="main-chat">
+                    <ul class="view-chat">
+                        <li
+                          v-for="message in currentContact ? currentContact.messages : []"
+                          :class="{
+                            'messageCloud': true,
+                            'sent': message.status === 'sent',
+                            'received': message.status === 'received'
+                          }"
+                        >
+                          <p v-cloak>{{ message.message }}</p>
+                          <div class="message-time">12:00</div>
+                        </li>
+                      </ul>
+                </section>
+                <!-- /main chat window  -->
+
+                <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
+
+                <!-- footer chat  -->
+                <footer class="chat">
+                    <nav class="left">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </nav>
+
+                    <nav class="center">
+                        <!-- <input class="text-message" type="text" placeholder="Scrivi un messaggio di testo"> -->
+                        <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+                        </textarea>
+                    </nav>
+
+                    <nav class="right">
+                        <i class="fa-solid fa-microphone"></i>
+                    </nav>
+                </footer>
+                <!-- /footer chat  -->
+            </div>
+            <!-- colonna di destra  -->
+        </main>
+        <!-- /main della mia app  -->
+    <!-- VJS  -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /VJS  -->
+    <!-- my js -->
+    <script src="main.js"></script>
+    <!-- /my js -->
+</body>
+</html>
