@@ -18,161 +18,169 @@
     <!-- /my css  -->
 </head>
 <body>
-        <!-- main della mia app  -->
-        <main id="app" class="application">
+    <!-- main della mia app  -->
+    <main id="app" class="application">
 
-            <!-- colonna di sinistra  -->
-            <div class="main-left" v-cloak>
+        <!-- colonna di sinistra  -->
+        <div class="main-left" v-cloak>
 
-                <!-- header sinistra  -->
-                <header class="app">
-                    <nav class="left">
-                        <div class="img-profilo">
-                            <img src="/img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="nome-profilo">
-                            Nome Utente
-                        </div>
-                    </nav>
-
-                    <nav class="right">
-                        <i class="fa-solid fa-circle-notch"></i>
-                        <i class="fa-solid fa-message"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </nav>
-                </header>
-                <!-- /header sinistra  -->
-
-                <!-- sezione notifiche  -->
-                <section class="notifiche">
-                    <div class="icona">
-                        <i class="fa-solid fa-bell-slash"></i>
+            <!-- header sinistra  -->
+            <header class="app">
+                <nav class="left">
+                    <div class="img-profilo">
+                        <img src="/img/avatar_1.jpg" alt="">
                     </div>
+                    <div class="nome-profilo">
+                        Nome Utente
+                    </div>
+                </nav>
+
+                <nav class="right">
+                    <i class="fa-solid fa-circle-notch"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </nav>
+            </header>
+            <!-- /header sinistra  -->
+
+            <!-- sezione notifiche  -->
+            <section class="notifiche">
+                <div class="icona">
+                    <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div>
+                    <div>Ricevi notifiche di nuovi messaggi</div>
                     <div>
-                        <div>Ricevi notifiche di nuovi messaggi</div>
-                        <div>
-                            <a href="#">
-                                Attiva notifiche
-                            </a>
-                        </div>
+                        <a href="#">
+                            Attiva notifiche
+                        </a>
                     </div>
-                </section>
-                <!-- /sezione notifiche  -->
+                </div>
+            </section>
+            <!-- /sezione notifiche  -->
 
-                <!-- sezione ricerca  -->
-                <section class="ricerca">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input class="search" type="text" 
-                    placeholder="Cerca o inizia una nuova chat"
-                    v-model="keySearch" 
-                    @keyup="searchContacts"
-                    >
-                </section>
-                <!-- /sezione ricerca  -->
+            <!-- sezione ricerca  -->
+            <section class="ricerca">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input class="search" type="text" 
+                placeholder="Cerca o inizia una nuova chat"
+                v-model="keySearch" 
+                @keyup="searchContacts"
+                >
+            </section>
+            <!-- /sezione ricerca  -->
 
-                <!-- sezione archivio messaggi  -->
-                <section class="messages">
-                    <ul>
-                        <li 
-                        v-for="(contact, index) in filteredContacts"
-                        class="contact-message"
-                        :class="{ 'active': contact === currentContact }"
-                        @click="setCurrentContact(contact)">
-                            <div class="contact-pic" v-cloak>
-                                <img :src="contact.avatar" :alt="contact.name">
-                            </div>
-                            <div class="message-info">
-                                <ul class="info-profile">
-                                  <li>
-                                    <p class="name-profile" v-cloak>{{ contact.name }}</p>
-                                  </li>
-                                  <li>
-                                    <p class="last-message" v-cloak>{{ getLastMessage(contact).message }}</p>
-                                  </li>
-                                </ul>
-                                <div class="ora">12:00</div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-                <!-- /sezione archivio messaggi  -->
-
-            </div>
-            <!-- /colonna di sinistra  -->
-
-            <!-- -----------------------------------  -->
-
-            <!-- colonna di destra  -->
-            <div class="main-right" v-cloak>
-
-                <!-- header destra  -->
-                <header class="app">
-                    <nav class="left">
-                        <div class="img-profilo">
-                            <img :src="currentContact.avatar" alt="">
+            <!-- sezione archivio messaggi  -->
+            <section class="messages">
+                <ul>
+                    <li 
+                    v-for="(contact, index) in filteredContacts"
+                    class="contact-message"
+                    :class="{ 'active': contact === currentContact }"
+                    @click="setCurrentContact(contact)">
+                        <div class="contact-pic" v-cloak>
+                            <img :src="contact.avatar" :alt="contact.name">
                         </div>
-                        <div class="nome-profilo" v-cloak>
-                            <p>{{ currentContact.name }}</p>
-                            <p class="last-message">Ultimo accesso</p>
+                        <div class="message-info">
+                            <ul class="info-profile">
+                              <li>
+                                <p class="name-profile" v-cloak>{{ contact.name }}</p>
+                              </li>
+                              <li>
+                                <p class="last-message" v-cloak>{{ getLastMessage(contact).message }}</p>
+                              </li>
+                            </ul>
+                            <div class="ora">12:00</div>
                         </div>
-                    </nav>
+                    </li>
+                </ul>
+            </section>
+            <!-- /sezione archivio messaggi  -->
 
-                    <nav class="right">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </nav>
-                </header>
-                <!-- /header destra  -->
+        </div>
+        <!-- /colonna di sinistra  -->
 
-                <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
+        <!-- -----------------------------------  -->
 
-                <!-- main chat window  -->
-                <section class="main-chat">
-                    <ul class="view-chat">
-                        <li
-                          v-for="message in currentContact ? currentContact.messages : []"
-                          :class="{
+        <!-- colonna di destra  -->
+        <div class="main-right" v-cloak>
+
+            <!-- header destra  -->
+            <header class="app">
+                <nav class="left">
+                    <div class="img-profilo">
+                        <img :src="currentContact.avatar" alt="">
+                    </div>
+                    <div class="nome-profilo" v-cloak>
+                        <p>{{ currentContact.name }}</p>
+                        <p class="last-message">Ultimo accesso</p>
+                    </div>
+                </nav>
+
+                <nav class="right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-paperclip"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </nav>
+            </header>
+            <!-- /header destra  -->
+
+            <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
+
+            <!-- main chat window  -->
+            <section class="main-chat">
+                <ul class="view-chat">
+                    <li
+                        v-for="message in currentContact ? currentContact.messages : []"
+                        :class="{
                             'messageCloud': true,
                             'sent': message.status === 'sent',
-                            'received': message.status === 'received'
-                          }"
-                        >
-                          <p v-cloak>{{ message.message }}</p>
-                          <div class="message-time">12:00</div>
-                        </li>
-                      </ul>
-                </section>
-                <!-- /main chat window  -->
+                            'received': message.status === 'received',
+                            'active': message === clickedMessage}"
+                        @click="dropdown(message)">
+                        <p v-cloak>{{ message.message }}</p>
+                        <div class="message-time">12:00</div>
+                        <!-- Dropdown menu -->
+                        <div v-show="message === clickedMessage" class="dropdown-menu">
+                            <ul>
+                                <li @click="infoMessage">Message info</li>
+                                <li @click="deleteMessage">Delete message</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            
+            <!-- /main chat window  -->
 
-                <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
+            <!-- +++++++++++++++++++++++++++++++++++++++++++++++  -->
 
-                <!-- footer chat  -->
-                <footer class="chat">
-                    <nav class="left">
-                        <i class="fa-regular fa-face-smile"></i>
-                    </nav>
+            <!-- footer chat  -->
+            <footer class="chat">
+                <nav class="left">
+                    <i class="fa-regular fa-face-smile"></i>
+                </nav>
 
-                    <nav class="center">
-                        <!-- <input class="text-message" type="text" placeholder="Scrivi un messaggio di testo"> -->
-                        <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
-                        </textarea>
-                    </nav>
+                <nav class="center">
+                    <!-- <input class="text-message" type="text" placeholder="Scrivi un messaggio di testo"> -->
+                    <textarea name="" id="text-message" cols="" rows="2" placeholder="scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+                    </textarea>
+                </nav>
 
-                    <nav class="right">
-                        <i class="fa-solid fa-microphone"></i>
-                    </nav>
-                </footer>
-                <!-- /footer chat  -->
-            </div>
-            <!-- colonna di destra  -->
-        </main>
-        <!-- /main della mia app  -->
-    <!-- VJS  -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- /VJS  -->
-    <!-- my js -->
-    <script src="main.js"></script>
-    <!-- /my js -->
+                <nav class="right">
+                    <i class="fa-solid fa-microphone"></i>
+                </nav>
+            </footer>
+            <!-- /footer chat  -->
+        </div>
+        <!-- colonna di destra  -->
+    </main>
+    <!-- /main della mia app  -->
+<!-- VJS  -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<!-- /VJS  -->
+<!-- my js -->
+<script src="main.js"></script>
+<!-- /my js -->
 </body>
 </html>

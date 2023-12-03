@@ -173,6 +173,7 @@ data() {
     newMessage: '',
     keySearch: '',
     filteredContacts: [],
+    clickedMessage: null,
 
         }
 },
@@ -213,7 +214,20 @@ methods: {
             this.filteredContacts = this.contacts;
         }
     },
-    
+    dropdown(message) {
+        if (this.clickedMessage === message) {
+            this.clickedMessage = null;
+        } else {
+            this.clickedMessage = message;
+        }
+    },
+    infoMessage() {
+        console.log("Message info");
+    },
+    deleteMessage() {
+        console.log("Delete message");
+    },
+
 },
 created() {
     if (this.contacts.length > 0) {
@@ -221,4 +235,4 @@ created() {
         this.filteredContacts = this.contacts;
     }
 },
-}).mount('#app')
+}).mount('#app');
