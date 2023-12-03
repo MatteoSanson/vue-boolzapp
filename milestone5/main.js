@@ -174,16 +174,17 @@ data() {
     keySearch: '',
     filteredContacts: [],
     clickedMessage: null,
-
         }
 },
 methods: {
     setCurrentContact(index) {
         this.currentContact = index;
     },
+
     getLastMessage(contact) {
         return contact.messages.length ? contact.messages[contact.messages.length - 1] : { message: "Non ci sono messaggi con questo contatto." };
     },
+
     sendMessage() {
         const trimmedMessage = this.newMessage.trim();
 
@@ -205,6 +206,7 @@ methods: {
             }, 1_000);
         }
     },
+
     searchContacts() {
         if (this.keySearch.trim() !== '') {
             this.filteredContacts = this.contacts.filter(contact =>
@@ -214,6 +216,7 @@ methods: {
             this.filteredContacts = this.contacts;
         }
     },
+
     dropdown(message) {
         if (this.clickedMessage === message) {
             this.clickedMessage = null;
@@ -221,13 +224,27 @@ methods: {
             this.clickedMessage = message;
         }
     },
+    
     infoMessage() {
         console.log("Message info");
     },
+
     deleteMessage() {
         console.log("Delete message");
+        if (this.clickedMessage) {
+            const index = this.currentContact.messages.indexOf(this.clickedMessage);
+            if (index !== -1) {
+                this.currentContact.messages.splice(index, 1);
+    
+                setTimeout(() => {
+                    this.clickedMessage = null;
+                }, 100);
+            }
+        }
     },
-
+      
+    
+    
 },
 created() {
     if (this.contacts.length > 0) {

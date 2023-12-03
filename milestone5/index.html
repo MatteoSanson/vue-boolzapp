@@ -140,13 +140,14 @@
                         @click="dropdown(message)">
                         <p v-cloak>{{ message.message }}</p>
                         <div class="message-time">12:00</div>
-                        <!-- Dropdown menu -->
+                        <!-- dropdown menu -->
                         <div v-show="message === clickedMessage" class="dropdown-menu">
                             <ul>
                                 <li @click="infoMessage">Message info</li>
                                 <li @click="deleteMessage">Delete message</li>
                             </ul>
                         </div>
+                         <!-- /dropdown menu -->
                     </li>
                 </ul>
             </section>
